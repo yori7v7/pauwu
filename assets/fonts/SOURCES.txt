@@ -1,0 +1,25 @@
+Self-hosted Google Fonts assets
+Downloaded 2026-10-18 from the official Google Fonts CSS2 and fonts.gstatic.com.
+
+CSS source:
+https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@400..600&display=swap
+
+cormorant-garamond-latin.woff2
+Family: Cormorant Garamond; style: normal; CSS font-weight: 400.
+https://fonts.gstatic.com/s/cormorantgaramond/v21/co3umX5slCNuHLi8bLeY9MK7whWMhyjypVO7abI26QOD_v86KnTOig.woff2
+
+cormorant-garamond-latin-italic.woff2
+Family: Cormorant Garamond; style: italic; CSS font-weight: 400.
+https://fonts.gstatic.com/s/cormorantgaramond/v21/co3smX5slCNuHLi8bLeY9MK7whWMhyjYrGFEsdtdc62E6zd58jD-iNM8.woff2
+
+dm-sans-latin.woff2
+Family: DM Sans; style: normal; CSS font-weight: 400 600 (variable).
+https://fonts.gstatic.com/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2
+
+All three are the official latin subset. Coverage includes U+0000-00FF,
+including Spanish precomposed accented vowels, enye, inverted punctuation,
+and additional punctuation. See the CSS source for the complete unicode-range.
+
+License files are unmodified SIL Open Font License 1.1 texts from:
+https://raw.githubusercontent.com/google/fonts/main/ofl/cormorantgaramond/OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt
