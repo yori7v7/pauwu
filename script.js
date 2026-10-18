@@ -46,6 +46,7 @@
     player.hidden = false;
     page.inert = false;
     document.documentElement.classList.add('entered');
+    document.dispatchEvent(new Event('birthday:opened'));
     invitation.inert = true;
     document.querySelector('#hero-title').focus({ preventScroll: true });
     invitation.setAttribute('aria-hidden', 'true');

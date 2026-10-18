@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#e9dff2">
-    <meta name="description" content="Una carta, un recuerdo y un pequeño universo para ti. Feliz cumpleaños, Pau.">
+    <meta name="description" content="Una carta, nuestros recuerdos y un pequeño universo para ti. Feliz cumpleaños, Pau.">
     <meta name="robots" content="noindex, nofollow">
     <title>Un pequeño universo para Pau ✧</title>
     <link rel="icon" href="./assets/star.svg" type="image/svg+xml">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./styles.css">
     <script>document.documentElement.className = 'js';</script>
     <script src="./script.js" defer></script>
+    <script src="./memory-gallery.js" defer></script>
   </head>
   <body>
     <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -31,7 +32,7 @@
         <div class="invitation-orbit" aria-hidden="true"><span></span><svg><use href="#spark"/></svg></div>
         <p class="eyebrow">HAY ALGO BONITO ESPERÁNDOTE</p>
         <h1 id="invitation-title">Pau, hoy el universo<br>celebra <em>contigo.</em></h1>
-        <p class="invitation-description" id="invitation-description">Una carta, un recuerdo y una canción.<br>Este ratito es para ti.</p>
+        <p class="invitation-description" id="invitation-description">Una carta, nuestros recuerdos y una canción.<br>Este ratito es para ti.</p>
         <button class="enter-button" id="enter-button" type="button">Abrir mi sorpresa <svg aria-hidden="true"><use href="#arrow"/></svg></button>
         <p class="sound-note"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9 4 5 7H2v6h3l4 3V4Zm4 3a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg> Se disfruta mejor con un poquito de música</p>
       </div>
@@ -56,16 +57,48 @@
             <p class="hero-description">Entre tantas personas, tantos lugares<br>y tantas vueltas… qué bonito encontrarte.</p>
             <a class="letter-link" href="#carta">Te escribí algo <span aria-hidden="true">↘</span></a>
           </div>
-          <div class="memory">
+          <div class="memory memory-gallery" role="region" aria-roledescription="carrusel" aria-label="Unos recuerdos contigo">
             <span class="memory-top-note">de mis recuerdos favoritos</span>
-            <figure class="photo-frame">
-              <span class="photo-tape" aria-hidden="true"></span>
-              <img src="./fotito.jpeg" alt="Paulet y yo, juntos en una foto bajo las lucecitas." width="899" height="1599" fetchpriority="high">
-              <figcaption>hay momentos que se quedan ♡</figcaption>
-            </figure>
+            <div class="memory-deck" id="memory-deck" tabindex="0" aria-label="Fotos y video. Usa las flechas izquierda y derecha para recorrer los recuerdos.">
+              <figure class="photo-frame memory-card" data-position="0" role="group" aria-roledescription="recuerdo" aria-label="1 de 5: tú y yo">
+                <span class="photo-tape" aria-hidden="true"></span>
+                <div class="memory-media"><img src="./fotito.jpeg" alt="Paulet y yo, juntos en una foto bajo las lucecitas." width="899" height="1599" fetchpriority="high"></div>
+                <figcaption>hay momentos que se quedan ♡</figcaption>
+              </figure>
+              <figure class="photo-frame memory-card" data-position="1" role="group" aria-roledescription="recuerdo" aria-label="2 de 5: nuestros dibujos" aria-hidden="true" inert>
+                <span class="photo-tape" aria-hidden="true"></span>
+                <div class="memory-media square-memory"><img src="./dibujos.jpeg" alt="Nuestros dibujos: una ranita verde, una tortuga y una conchita sobre la mesa." width="1500" height="1500" decoding="async"></div>
+                <figcaption>nuestras obras de arte JAJA 🐸</figcaption>
+              </figure>
+              <figure class="photo-frame memory-card" data-position="2" role="group" aria-roledescription="recuerdo" aria-label="3 de 5: los shots" aria-hidden="true" inert>
+                <span class="photo-tape" aria-hidden="true"></span>
+                <div class="memory-media square-memory"><img src="./shots.jpeg" alt="Seis shots de colores sobre una tablita de madera, listos para brindar." width="1500" height="1500" decoding="async"></div>
+                <figcaption>y de estos también hay recuerdos 🗣️</figcaption>
+              </figure>
+              <figure class="photo-frame memory-card" data-position="3" role="group" aria-roledescription="recuerdo" aria-label="4 de 5: nuestros dibujos en la pared" aria-hidden="true" inert>
+                <span class="photo-tape" aria-hidden="true"></span>
+                <div class="memory-media square-memory"><img src="./pared.jpeg" alt="Nuestros dibujos colgados con pinzas en la pared, entre muchas otras obras." width="1500" height="1500" decoding="async"></div>
+                <figcaption>hasta en la pared dejamos un pedacito</figcaption>
+              </figure>
+              <figure class="photo-frame memory-card video-card" data-position="4" role="group" aria-roledescription="recuerdo" aria-label="5 de 5: el video de nuestra paleta" aria-hidden="true" inert>
+                <span class="photo-tape" aria-hidden="true"></span>
+                <div class="memory-media video-memory">
+                  <video id="paleta-video" src="./paleta.mp4" poster="./assets/paleta-poster.jpg" width="474" height="850" preload="metadata" muted playsinline controls aria-label="Paulet y yo compartiendo nuestra paleta"></video>
+                  <button class="video-sound" id="video-sound" type="button" aria-label="Escuchar el video" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M9 4 5 7H2v6h3l4 3V4Zm4 3a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span>escuchar este recuerdo</span></button>
+                </div>
+                <figcaption>la paleta tenía otros planes 😭🍭</figcaption>
+              </figure>
+            </div>
+            <div class="memory-toolbar">
+              <button class="memory-arrow" id="memory-previous" type="button" aria-label="Recuerdo anterior" disabled><svg aria-hidden="true"><use href="#arrow"/></svg></button>
+              <div class="memory-pagination"><span id="memory-count">01 <span>/ 05</span></span><span class="memory-hint" id="memory-hint">desliza los recuerdos</span></div>
+              <button class="memory-autoplay" id="memory-autoplay" type="button" aria-label="Pausar pase de recuerdos" aria-pressed="true"><svg class="gallery-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zm6 0h3v14h-3z" fill="currentColor"/></svg><svg class="gallery-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 11 7L9 19Z" fill="currentColor"/></svg></button>
+              <button class="memory-arrow" id="memory-next" type="button" aria-label="Siguiente recuerdo"><svg aria-hidden="true"><use href="#arrow"/></svg></button>
+            </div>
+            <p class="sr-only" id="memory-status" aria-live="polite" aria-atomic="true"></p>
             <svg class="photo-spark spark-one" aria-hidden="true"><use href="#spark"/></svg>
             <svg class="photo-spark spark-two" aria-hidden="true"><use href="#spark"/></svg>
-            <span class="memory-bottom-note">y todavía nos faltan muchos más.</span>
+            <p class="memory-bottom-note" id="memory-note">y todavía nos faltan muchos más.</p>
           </div>
           <div class="hero-bottom"><span>PARA ALGUIEN MUY ESPECIAL</span><span aria-hidden="true">DESLIZA UN POQUITO ↓</span></div>
         </section>

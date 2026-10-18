@@ -160,3 +160,53 @@ button:focus-visible,a:focus-visible{outline:2px solid currentColor;outline-offs
 @media(max-height:650px) and (min-width:761px){.invitation-content{padding-top:62px;padding-bottom:64px}.invitation-orbit{height:50px;margin-bottom:10px}.invitation h1{font-size:59px;margin:15px 0}.invitation-description{margin:18px 0 22px}.invitation-for{bottom:18px}.invitation-corner{top:30px}.sound-note{margin-top:14px}}
 @media(max-width:360px){.title-spark{right:0;top:56%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.invitation-orbit svg,.wish-stars i{opacity:.8}.wish-particle{display:none}.entered .hero-copy,.entered .memory,.music-player{opacity:1;transform:none}}
+
+/* A little stack of keepsakes, with room to turn each one over. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero{overflow:clip}
+.memory-gallery{perspective:1200px}
+.memory-deck{position:relative;aspect-ratio:.7;touch-action:pan-y pinch-zoom;cursor:grab;outline-offset:18px}
+.memory-deck:focus-visible{outline:1px dashed #80588b;border-radius:2px}
+.memory-card{position:absolute;inset:0;transform-origin:50% 80%;backface-visibility:hidden;transition:transform .72s cubic-bezier(.22,.75,.25,1),opacity .6s;will-change:transform;user-select:none}
+.memory-card[data-position="0"]{z-index:5;transform:translate3d(0,0,0) rotate(5deg);opacity:1;visibility:visible}
+.memory-card[data-position="1"]{z-index:4;transform:translate3d(11px,-2px,-35px) rotate(-3deg) scale(.97);opacity:1;visibility:visible;box-shadow:0 8px 20px #4e2d6220}
+.memory-card[data-position="2"]{z-index:3;transform:translate3d(-9px,-8px,-65px) rotate(-8deg) scale(.94);opacity:1;visibility:visible;box-shadow:0 8px 20px #4e2d6210}
+.memory-card[data-position="3"],.memory-card[data-position="4"]{z-index:1;transform:translate3d(0,-12px,-90px) rotate(-10deg) scale(.9);opacity:0;visibility:hidden;pointer-events:none}
+.memory-card.is-leaving{z-index:8;transform:translate3d(var(--exit-x),-18px,70px) rotate(var(--exit-rotation)) rotateY(-12deg);opacity:0;visibility:visible;pointer-events:none}
+.memory-deck.is-dragging{cursor:grabbing}
+.memory-deck.is-dragging .memory-card[data-position="0"]{transition:none}
+.memory-media{position:relative;height:calc(100% - 48px);width:100%;overflow:hidden;background:#efe8ed}
+.memory-media img,.memory-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 43%}
+.memory-media img{pointer-events:none}
+.square-memory{background:#f1ebe6}
+.square-memory img{object-fit:contain;background:transparent}
+.video-memory{background:#261d2e;cursor:auto}
+.video-memory video{object-fit:contain}
+.memory-card figcaption{display:grid;place-items:center;height:48px;padding:8px 2px;font-size:17px;line-height:1.15;white-space:normal}
+.memory-gallery .photo-tape{top:-13px}
+.memory-gallery .spark-one{z-index:9;pointer-events:none}
+.memory-gallery .spark-two{z-index:9;bottom:175px;pointer-events:none}
+.memory-toolbar{position:relative;z-index:9;display:flex;align-items:center;gap:12px;margin:25px -1px 0}
+.memory-arrow,.memory-autoplay{display:grid;place-items:center;flex-shrink:0;border:1px solid #ad95b555;border-radius:50%;background:#f4ecf755;color:#72577e;width:42px;height:42px;padding:0;transition:background .2s,transform .2s}
+.memory-arrow:hover,.memory-autoplay:hover{background:#f9f1fa;transform:translateY(-2px)}
+.memory-arrow:disabled{opacity:.28;cursor:default;transform:none;background:transparent}
+.memory-arrow svg{width:19px;height:19px}
+#memory-previous svg{transform:rotate(180deg)}
+.memory-pagination{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1;min-width:0}
+#memory-count{font-family:var(--serif);font-size:24px;line-height:1;color:#62496d;white-space:nowrap}
+#memory-count span{font-size:18px;color:#80678d}
+.memory-hint{font-size:7px;letter-spacing:.04em;color:#725f7c;white-space:nowrap}
+.memory-autoplay{width:34px;height:34px;border-color:transparent;background:transparent}
+.memory-autoplay svg{width:13px;height:13px}
+.gallery-play{display:none}.is-paused .gallery-play{display:block}.is-paused .gallery-pause{display:none}
+.memory-gallery .memory-bottom-note{position:static;display:block;margin:17px -15px 0;min-height:73px;text-align:center;font-size:18px;line-height:1.5;white-space:normal;transform:rotate(-3deg);text-wrap:pretty}
+.memory-gallery .paleta-note{font-family:var(--sans);font-style:normal;font-size:10px;line-height:1.8;transform:none;padding:0 12px;color:#72577e}
+.video-sound{position:absolute;right:8px;top:8px;z-index:2;display:flex;align-items:center;gap:6px;border:1px solid #fff3f74d;border-radius:99px;color:#fff7fc;background:#30223ec9;backdrop-filter:blur(8px);padding:9px 11px;font-size:8px;min-height:34px}
+.video-sound svg{width:13px;height:13px}
+.no-js .memory-toolbar,.no-js .video-sound{display:none}
+@media(min-width:1600px){.memory-gallery{width:335px}}
+@media(max-width:1050px){.memory-card figcaption{font-size:15px}.memory-toolbar{gap:8px}.memory-gallery .memory-bottom-note{font-size:17px}.memory-gallery .paleta-note{font-size:10px}}
+@media(min-width:761px) and (max-width:900px){.memory-card figcaption{font-size:13px}.memory-toolbar{gap:5px;margin-top:22px}.memory-arrow{width:36px;height:36px}.memory-autoplay{width:28px;height:32px}.memory-hint{font-size:6px;letter-spacing:0}.memory-gallery .memory-bottom-note{font-size:15px;min-height:83px}.memory-gallery .paleta-note{font-size:9px;padding:0 4px}}
+@media(max-width:760px){.memory-gallery{margin-bottom:0}.memory-card figcaption{font-size:15px}.memory-toolbar{margin-top:25px;gap:6px}.memory-gallery .memory-bottom-note{font-size:17px;min-height:80px;margin-top:16px}.memory-gallery .paleta-note{font-size:10px}.memory-gallery .spark-two{bottom:176px}.video-sound{font-size:7px;padding:8px;min-height:32px}.memory-hint{font-size:6px}}
+@media(max-width:360px){.memory-toolbar{gap:4px}.memory-arrow{width:38px;height:38px}.memory-autoplay{width:30px;height:32px}.memory-card figcaption{font-size:13px}.memory-gallery .memory-bottom-note{font-size:16px}.memory-gallery .paleta-note{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.memory-card{will-change:auto}.memory-card.is-leaving{visibility:hidden}.memory-deck.is-dragging .memory-card[data-position="0"]{transform:rotate(5deg)!important}}
